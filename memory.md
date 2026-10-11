@@ -1,13 +1,18 @@
-<!-- Last updated: 2026-05-06 23:45 -->
 # Memory
 
-*Qwen updates this file at the end of each session with things learned about the user.*
-
 ## About the User
-- (nothing recorded yet)
+- Username: dp, machine: floorBoard (Ubuntu Linux)
+- Primary projects dir: ~/projects (20+ projects)
+- Codes primarily in Python
+
+## Key Projects
+- qwen-agent: this agent
+- qwen-gateway: Ollama proxy/gateway
+- translator: orchestrator/subagent pattern demo
 
 ## Preferences
-- (nothing recorded yet)
+- Direct and practical communication
+- Confirm before writing/deleting files
 
 ## Key Facts
 - User provided a list of MATLAB files related to signal processing, acoustic testing, and structural health monitoring

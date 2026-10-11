@@ -261,7 +261,7 @@ def main():
             console.print("[yellow]Wrapping up — updating memory files…[/]")
             closing = (
                 "The session is ending now. Review our conversation and call "
-                "\"update_memory_files\" with updated content for memory.md, tasks.md, and qwen.md."
+                "\"update_memory_files\" with updated content for memory.md, tasks.md, and qwen.md. " "Start from the current contents of each file: keep every existing entry and section unless it is clearly wrong or the user asked to remove it. Only add or update. Do not invent facts the user did not state."
             )
             history.append(HumanMessage(content=closing))
             try:
