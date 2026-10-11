@@ -196,9 +196,7 @@ def run_agent_sync(agent, history: list) -> tuple[list, str]:
             if confirm_gate.pending():
                 live.stop()
                 action, detail = confirm_gate.question()
-                console.print(Panel(detail[:1500], title=f"[bold red]{action} wants to run[/]",
-                                    border_style="red", padding=(0, 1)))
-                confirm_gate.answer(Confirm.ask("[bold red]Allow?[/]", default=False))
+                confirm_gate.prompt_terminal(console)
                 live.start()
             live.update(render_status())
             threading.Event().wait(0.1)
