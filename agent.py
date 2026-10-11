@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # ============================================================
-#  agent.py — Qwen Agent with live status panel (rich UI)
+#  agent.py — Relay with live status panel (rich UI)
 #  v2: fixed event loop, single-pass streaming, cleaner UI
 # ============================================================
 
@@ -42,7 +42,7 @@ from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 from langgraph.prebuilt import create_react_agent
 
 # ── Input history ───────────────────────────────────────────
-_HISTORY_FILE = os.path.expanduser("~/.qwen_agent_history")
+_HISTORY_FILE = os.path.expanduser("~/.relay_history")
 try:
     readline.read_history_file(_HISTORY_FILE)
 except FileNotFoundError:
@@ -65,7 +65,7 @@ def _get_loop() -> asyncio.AbstractEventLoop:
             t.start()
     return _loop
 
-BASE_PROMPT = f"""You are Qwen, a capable and thoughtful AI assistant running locally on floorBoard \
+BASE_PROMPT = f"""You are Relay, a capable and thoughtful AI assistant running locally on floorBoard \
 (Ubuntu Linux, username dp).
 
 IMPORTANT — filesystem facts:
@@ -150,7 +150,7 @@ def render_status() -> Panel:
                 Text(s["result"], style="dim white"),
             )
 
-    return Panel(grid, title=f"[{color}]Qwen Agent[/]", border_style=color, padding=(0, 1))
+    return Panel(grid, title=f"[{color}]Relay[/]", border_style=color, padding=(0, 1))
 
 
 def run_agent_sync(agent, history: list) -> tuple[list, str]:
@@ -228,7 +228,7 @@ def build_agent():
 def main():
     console.print()
     console.print(Panel.fit(
-        f"[bold bright_blue]Qwen Agent[/]  [dim]|[/]  [cyan]{get_display_model()}[/]\n"
+        f"[bold bright_blue]Relay[/]  [dim]|[/]  [cyan]{get_display_model()}[/]\n"
         f"[dim]Type your message. Say [bold]exit[/] or [bold]bye[/] to end.[/]",
         border_style="bright_blue", padding=(0, 2),
     ))
@@ -266,7 +266,7 @@ def main():
             history.append(HumanMessage(content=closing))
             try:
                 history, reply = run_agent_sync(agent, history)
-                console.print(f"\n[bold]Qwen:[/] {reply}\n")
+                console.print(f"\n[bold]Relay:[/] {reply}\n")
             except Exception as e:
                 console.print(f"[red](memory update error: {e})[/]")
             console.print("[green]Session saved. Goodbye![/]\n")
@@ -281,7 +281,7 @@ def main():
             reply = f"(error: {e})"
 
         console.print()
-        console.print(Panel(reply, title="[bold bright_blue]Qwen[/]", border_style="bright_blue", padding=(0, 1)))
+        console.print(Panel(reply, title="[bold bright_blue]Relay[/]", border_style="bright_blue", padding=(0, 1)))
         console.print()
 
 

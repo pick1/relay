@@ -1,4 +1,4 @@
-# Qwen Agent
+# Relay
 
 ![Python](https://img.shields.io/badge/python-3.10+-3776AB?logo=python&logoColor=white)
 ![LangGraph](https://img.shields.io/badge/LangGraph-ReAct_agent-1C3C3C)
@@ -26,7 +26,7 @@ Works with any **OpenAI-compatible endpoint** (llama.cpp `llama-server`, a remot
 ## File Structure
 
 ```
-qwen-agent/
+relay/
 ├── agent.py            ← main entry point (UI loop, agent wiring)
 ├── config.py           ← model, backend & path settings (env-overridable)
 ├── tools.py            ← all agent tools
@@ -68,9 +68,9 @@ llama-server -m /path/to/model.gguf --alias my-model \
 Then run the agent against it:
 
 ```bash
-USE_XAVIER=true \
-XAVIER_BASE_URL=http://localhost:8080/v1 \
-XAVIER_MODEL=my-model \
+USE_OPENAI=true \
+OPENAI_BASE_URL=http://localhost:8080/v1 \
+OPENAI_MODEL=my-model \
 python3 agent.py
 ```
 
